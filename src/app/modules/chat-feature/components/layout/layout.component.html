@@ -1,0 +1,24 @@
+<!-- <tui-scrollbar class="w-full h-full bg-slate-500">
+    
+</tui-scrollbar> -->
+<div class="w-full h-full">
+    <section class="flex flex-row h-full">
+        <div class="min-w-[266px] h-full  px-4 py-2">
+            <div class="py-4"><h2 tuiTitle="m">Messages</h2></div>
+            <div>
+                <div
+                    *tuiRepeatTimes="let index of 10"
+                    tuiAppearance="floating"
+                    tuiCardLarge
+                    tuiHeader
+                >
+                    <h2 tuiTitle>
+                        Some random content
+                        <span tuiSubtitle>A subtitle</span>
+                    </h2>
+                    </div>
+                </div>
+        </div>
+        <div class="w-full h-full bg-red-500">chat section</div>
+    </section>
+</div>

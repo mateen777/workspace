@@ -1,15 +1,117 @@
-<mat-sidenav-container class="workspace-container">
-  <mat-sidenav #sidenav class="workspace-sidenav"
-    opened 
-    mode="side" 
-    [fixedInViewport]="true" 
-    [fixedTopGap]="0"
-    [fixedBottomGap]="0"
+<!-- <tui-root [attr.tuiTheme]="darkMode() ? 'dark' : null"> -->
+<header tuiNavigationHeader class="after-none">
+    <span tuiNavigationLogo>
+        <!-- <tui-icon icon="@tui.layout-grid" 
+            [style.color]="'#6788ff'" 
+            [style.height.px]="24"
+            [style.width.px]="24"
+        /> -->
+        <tui-icon icon="logo" [style.color]="'#6788ff'" 
+        [style.height.px]="40"
+        [style.width.px]="104" />
+         <!-- <img style="width: 1.5rem; height: 1.5rem;" src="assets/icons/logo.svg" alt=""> -->
+    </span>
+    
+    <hr />
+    <button
+        appearance="action-grayscale"
+        iconStart="@tui.bell"
+        tuiIconButton
+        type="button"
+        size="m"
+        tuiAppearanceState="active"
     >
-    Sidenav
-  </mat-sidenav>
-
-  <mat-sidenav-content >
-    <p>kjdwhavdhvwdhaw</p>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+        Notifications
+        <!-- <tui-badge-notification size="s"
+        tuiSlot="top">9</tui-badge-notification> -->
+        <tui-badge-notification />
+    </button>
+    <!-- 'https://avatars.githubusercontent.com/u/11832552' -->
+    <tui-avatar [src]="'https://avatars.githubusercontent.com/u/11832552' | tuiFallbackSrc: ('Mohammed Mateen' | tuiInitials ) | async" 
+    [style.background]="'Mohammed Mateen' | tuiAutoColor" />
+</header>
+<div [style.display]="'flex'">
+    <aside
+        [style.height]="'calc(100vh - 3rem)'"
+        [tuiNavigationAside]="expanded"
+        class="!w-[3.75rem]"
+    >
+        <header>
+            <button
+                iconStart="@tui.home"
+                tuiIconButton
+                size="m"
+                type="button"
+                class="mb-1"
+            >
+            </button>
+        </header>
+        <button
+            iconStart="@tui.messages-square"
+            tuiIconButton
+            size="m"
+            type="button"
+            class="mb-1"
+            routerLink="chat"
+            routerLinkActive="link-active"
+        >
+        </button>
+        
+        <button
+            iconStart="@tui.ellipsis"
+            tuiIconButton
+            size="m"
+            type="button"
+            class="mb-1"
+        >
+        </button>
+        <hr />
+        <button
+            iconStart="@tui.plus"
+            tuiIconButton
+            size="m"
+            type="button"
+            class="mb-1"
+        >
+        </button>
+        <footer>
+            <!-- <button
+                tuiAsideItem
+                type="button"
+                [iconStart]="expanded ? '@tui.chevron-left' : '@tui.chevron-right'"
+                (click)="expanded = !expanded"
+            >
+                {{ expanded ? 'Collapse' : 'Expand' }}
+            </button> -->
+            <hr class="!mb-2">
+            <!-- <tui-segmented
+                [style.flex-direction]="'column'"
+                [style.font-weight]="'bold'"
+                [(activeItemIndex)]="active"
+                class="colors"
+                (activeItemIndexChange)="setTheme($event)"
+            >
+                <button type="button" [class.active]="0 === active">
+                    <tui-icon icon="@tui.sun" />
+                </button>
+                <button type="button" [class.active]="1 === active">
+                    <tui-icon icon="@tui.moon" />
+                </button>
+            </tui-segmented> -->
+            <button
+                appearance="action-grayscale"
+                [iconStart]="darkMode() ? '@tui.moon' : '@tui.sun'"
+                tuiIconButton
+                type="button"
+                size="m"
+                [style.border-radius.%]="100"
+                (click)="this.darkMode.set(!darkMode())"
+            >
+            </button>
+        </footer>
+    </aside>
+    <main tuiNavigationMain class="!block !p-0">
+           <router-outlet></router-outlet>
+    </main>
+</div>
+<!-- </tui-root> -->

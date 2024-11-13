@@ -10,3 +10,21 @@
     border-radius: 0px;
     background: rgba(255, 0, 0, 0.5);
 }
+
+.colors {
+    background: var(--tui-background-base);
+ 
+    &::before {
+        color: #050814;
+        // color: var(--tui-text-action);
+        box-shadow: none;
+    }
+ 
+    .active {
+        color: #fff;
+    }
+}
+
+.link-active {
+    background: var(--tui-background-neutral-1-hover);
+}
