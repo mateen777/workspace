@@ -38,10 +38,9 @@ const ICON =
 
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet, TuiRoot,
-    FormsModule,
+    selector: 'app-root',
+    imports: [RouterOutlet, TuiRoot,
+        FormsModule,
         KeyValuePipe,
         NgForOf,
         RouterLink,
@@ -69,24 +68,23 @@ const ICON =
         TuiFallbackSrcPipe,
         TuiInitialsPipe,
         AsyncPipe
-  ],
-  providers: [
-    // tuiIconResolverProvider((icon) =>
-    //     icon.includes('/') ? icon : `/assets/icons/${icon}.svg`,
-    // ),
-    {
-      provide: TUI_ICON_RESOLVER,
+    ],
+    providers: [
+        // tuiIconResolverProvider((icon) =>
+        //     icon.includes('/') ? icon : `/assets/icons/${icon}.svg`,
+        // ),
+        {
+            provide: TUI_ICON_RESOLVER,
             deps: [[new SkipSelf(), TUI_ICON_RESOLVER]],
             useFactory(defaultResolver: TuiStringHandler<string>) {
-                return (name: string) =>
-                    name.startsWith('@tui.')
-                        ? defaultResolver(name)
-                        : `/assets/icons/${name}.svg`;
+                return (name: string) => name.startsWith('@tui.')
+                    ? defaultResolver(name)
+                    : `/assets/icons/${name}.svg`;
             },
-    }
-],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+        }
+    ],
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.scss'
 })
 export class AppComponent implements OnInit{
   title = 'mateen-workspace';
