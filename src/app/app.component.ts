@@ -1,5 +1,5 @@
 import { TUI_ICON_RESOLVER, TuiFallbackSrcPipe, TuiRoot } from "@taiga-ui/core";
-import { Component, EventEmitter, inject, OnInit, Signal, SkipSelf } from '@angular/core';
+import { Component, computed, EventEmitter, inject, OnInit, Signal, SkipSelf, WritableSignal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {KeyValuePipe, NgForOf, AsyncPipe} from '@angular/common';
@@ -103,6 +103,7 @@ export class AppComponent implements OnInit{
   // activeLink = toSignal(inject(RouterLinkActive).isActiveChange);
   
   protected readonly darkMode = inject(TUI_DARK_MODE);
+  protected readonly activeTheme = computed(() => this.darkMode() ? 'dark' : 'light');
   
   ngOnInit(): void {
     this.active = this.darkMode() ? 1 : 0;
@@ -116,8 +117,8 @@ export class AppComponent implements OnInit{
   }
 
   setSideAndHeaderColor(){
-    this.themeColorService.color = '#050814';
-    // this.themeColorService.color = this.darkMode() ? '#050814' : '#050814';
+    // this.themeColorService.color = '#050814';
+    this.themeColorService.color = this.darkMode() ? '#333' : '#f6f8fc';
   }
 
 }

@@ -1,5 +1,5 @@
-<!-- <tui-root [attr.tuiTheme]="darkMode() ? 'dark' : null"> -->
-<header tuiNavigationHeader class="after-none">
+<tui-root [attr.tuiTheme]="activeTheme()">
+<header tuiNavigationHeader [attr.tuiTheme]="activeTheme()" class="after-none">
     <span tuiNavigationLogo>
         <!-- <tui-icon icon="@tui.layout-grid" 
             [style.color]="'#6788ff'" 
@@ -32,6 +32,7 @@
 </header>
 <div [style.display]="'flex'">
     <aside
+        [attr.tuiTheme]="activeTheme()"
         [style.height]="'calc(100vh - 3rem)'"
         [tuiNavigationAside]="expanded"
         class="!w-[3.75rem]"
@@ -100,18 +101,19 @@
             </tui-segmented> -->
             <button
                 appearance="action-grayscale"
+                tuiAppearanceState="active"
                 [iconStart]="darkMode() ? '@tui.moon' : '@tui.sun'"
                 tuiIconButton
                 type="button"
                 size="m"
                 [style.border-radius.%]="100"
-                (click)="this.darkMode.set(!darkMode())"
+                (click)="setTheme(0)"
             >
             </button>
         </footer>
     </aside>
-    <main tuiNavigationMain class="!block !p-0">
+    <main tuiNavigationMain class="!block !p-0 overflow-y-auto" [style.height]="'calc(100vh - 3rem)'">
            <router-outlet></router-outlet>
     </main>
 </div>
-<!-- </tui-root> -->
+</tui-root>

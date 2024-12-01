@@ -2,9 +2,29 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import '@taiga-ui/core/styles/taiga-ui-local.scss';
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .after-none::after{
     content: none !important;
+}
+
+hr{
+    background: var(--tui-border-normal);
+    block-size: 1px;
+    margin: 0 0 .25rem;
+    border: none;
+}
+
+.search{
+    .t-hosted{
+        .t-textfield{
+            --tui-height: var(--tui-height-m);
+        }
+    }
+
+    .t-cleaner{
+        border-color: transparent !important;
+    }
 }
