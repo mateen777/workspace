@@ -1,5 +1,5 @@
-import { AsyncPipe, JsonPipe, NgIf } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { AsyncPipe, JsonPipe } from '@angular/common';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormControl, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import {
   TuiRepeatTimes,
@@ -15,7 +15,8 @@ import {
   TuiSurface,
   TUI_DARK_MODE,
   TuiButton,
-  TuiDropdown
+  TuiDropdown,
+  TuiTextfield
 } from '@taiga-ui/core';
 import {
   TuiAvatar,
@@ -34,49 +35,57 @@ import {
   TuiHeader,
   TuiNavigation,
 } from '@taiga-ui/layout';
-import { TuiInputModule, TuiTextfieldControllerModule } from '@taiga-ui/legacy';
+import { TuiInputModule,TuiTextfieldControllerModule } from '@taiga-ui/legacy';
+import { InputMessageComponent } from "../../../../shared/components/input-message/input-message.component";
 @Component({
     selector: 'app-layout',
     imports: [
-        FormsModule,
-        ReactiveFormsModule,
-        NgIf,
-        TuiAppearance,
-        TuiSurface,
-        TuiBlock,
-        TuiRepeatTimes,
-        TuiHeader,
-        TuiTitle,
-        TuiScrollbar,
-        TuiBadge,
-        TuiIcon,
-        TuiAvatar,
-        TuiCardLarge,
-        TuiCardMedium,
-        TuiCell,
-        TuiBadgeNotification,
-        TuiFilterPipe,
-        TuiInputModule,
-        TuiTextfieldControllerModule,
-        TuiDataListWrapper,
-        TuiButton,
-        TuiDropdown,
-        TuiStringifyContentPipe,
-        TuiFiles,
-        AsyncPipe,
-        JsonPipe
-    ],
+    FormsModule,
+    ReactiveFormsModule,
+    TuiAppearance,
+    TuiSurface,
+    TuiBlock,
+    TuiRepeatTimes,
+    TuiHeader,
+    TuiTitle,
+    TuiScrollbar,
+    TuiBadge,
+    TuiIcon,
+    TuiAvatar,
+    TuiCardLarge,
+    TuiCardMedium,
+    TuiCell,
+    TuiBadgeNotification,
+    TuiFilterPipe,
+    TuiTextfieldControllerModule,
+    TuiDataListWrapper,
+    TuiButton,
+    TuiDropdown,
+    TuiStringifyContentPipe,
+    TuiFiles,
+    AsyncPipe,
+    JsonPipe,
+    InputMessageComponent,
+    TuiTextfield,
+],
     templateUrl: './layout.component.html',
     styleUrl: './layout.component.scss',
     host: {}
 })
-export class LayoutComponent {
+export class LayoutComponent implements OnInit{
+  ngOnInit(): void {
+    console.log(this.search, typeof this.search);
+  }
   protected value = 0;
   protected search = '';
   protected chatsearch = '';
   protected showChatSearch:boolean = false;
   protected readonly darkMode = inject(TUI_DARK_MODE);
   protected readonly control = new FormControl<TuiFileLike | null>(null);
+
+  get searchValue(): string {
+    return this.search || '';
+  }
 
   protected readonly users:string[] = [
     "John Cleese",

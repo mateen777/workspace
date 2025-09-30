@@ -1,0 +1,15 @@
+<!-- appearance="no-border" -->
+<tui-editor
+    [floatingToolbar]="true"
+    [formControl]="control"
+    [style.max-height.px]="200"
+    [tools]="[]"
+>
+    Typing...
+    <ng-container ngProjectAs="tools">
+        <button tuiBoldTool></button>
+        <button tuiItalicTool></button>
+        <button tuiUnderlineTool></button>
+        <button tuiStrikeTool></button>
+    </ng-container>
+</tui-editor>

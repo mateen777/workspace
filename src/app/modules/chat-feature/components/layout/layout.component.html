@@ -12,18 +12,16 @@
         </div>
       </div>
       <div class="p-2">
-        <tui-input class="search"
-          tuiTextfieldIcon="@tui.search"
-          tuiTextfieldSize="l"
-          [tuiTextfieldLabelOutside]="true"
-          [(ngModel)]="search"
+        <tui-textfield class="search"
+          iconStart="@tui.search"
         >
-        Type a username
-            <input
-                tuiTextfieldLegacy
-                />
-                <!-- placeholder="Type a username" -->
-        </tui-input>
+            <input 
+              type="text"
+              tuiTextfield
+              placeholder="Type a username"
+              [(ngModel)]="search"
+            />
+        </tui-textfield>
       </div>
       <hr class="mb-2 mx-2" />
       <tui-scrollbar >
@@ -152,55 +150,18 @@
       <div class="flex-1">
         {{control.value}}
         <tui-files class="tui-space_top-1">
-          <tui-file *ngIf="control.value"
-              state="normal"
-              [file]="control.value"
-              (remove)="removeFile()"
-          />
+          @if (control.value) {
+            <tui-file
+                state="normal"
+                [file]="control.value"
+                (remove)="removeFile()"
+            />
+          }
       </tui-files>
       </div>
       <div>
         <div class="w-full h-11">
-          <div style="font:var(--tui-font-text-m); line-height: 1.25rem; ;" class="flex items-center w-full h-full box-border overflow-hidden px-4">
-            <div class="flex items-center">
-              <!-- <label tuiInputFiles  class="!h-full !min-h-full !p-0 ">
-                  <input class="!border-none !bg-transparent"
-                      accept="image/*"
-                      tuiInputFiles
-                      [formControl]="control"
-                  />
-                  <ng-template>
-                    <tui-icon class="w-5 h-5 cursor-pointer" tuiAppearance="icon" icon="@tui.paperclip"  />
-                  </ng-template>
-              </label> -->
-              <button
-                appearance="icon"
-                size="s"
-                iconStart="@tui.paperclip"
-                tuiDropdownHover
-                tuiDropdownOpen
-                tuiIconButton
-                type="button"
-                [tuiDropdown]="dropdown"
-            >
-                Action
-            </button>
-            <ng-template
-                #dropdown
-                let-close
-            >
-                <tui-data-list-wrapper
-                    [items]="items"
-                    [itemContent]="stringify | tuiStringifyContent"
-                    (itemClick)="menu($event);close()"
-                />
-            </ng-template>
-            </div>
-            <input class="chat-input" placeholder="Your message" type="text">
-            <div class="flex items-center">
-              <tui-icon class="w-5 h-5 cursor-pointer" tuiAppearance="icon" icon="@tui.search"  />
-            </div>
-          </div>
+          <app-input-message></app-input-message>
         </div>
       </div>
     </div>

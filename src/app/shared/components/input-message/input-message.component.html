@@ -1,0 +1,32 @@
+<div style="font:var(--tui-font-text-m); line-height: 1.25rem; ;" 
+    class="flex items-center w-full h-full box-border px-4"
+>
+    <button
+        appearance="icon"
+        size="s"
+        iconStart="@tui.paperclip"
+        tuiDropdownHover
+        tuiDropdownOpen
+        tuiIconButton
+        type="button"
+        [tuiDropdown]="dropdown"
+    >
+        Action
+    </button>
+    <ng-template
+        #dropdown
+        let-close
+    >
+        <tui-data-list-wrapper
+            [items]="items"
+            [itemContent]="stringify | tuiStringifyContent"
+            (itemClick)="menu($event);close()"
+        />
+    </ng-template>
+    <div class="flex items-center flex-grow" >
+        <app-text-editor></app-text-editor>
+    </div>
+    <div class="flex items-center">
+      <tui-icon class="w-5 h-5 cursor-pointer" tuiAppearance="icon" icon="@tui.search"  />
+    </div>
+</div>
