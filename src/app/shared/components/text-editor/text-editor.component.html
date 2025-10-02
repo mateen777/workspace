@@ -1,11 +1,11 @@
-<!-- appearance="no-border" -->
 <tui-editor
+    appearance="no-border"
+    class="min-h-10 overflow-hidden editor"
     [floatingToolbar]="true"
     [formControl]="control"
-    [style.max-height.px]="200"
+    [style.max-height.px]="100"
     [tools]="[]"
 >
-    Typing...
     <ng-container ngProjectAs="tools">
         <button tuiBoldTool></button>
         <button tuiItalicTool></button>

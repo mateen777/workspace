@@ -1,32 +1,58 @@
-<div style="font:var(--tui-font-text-m); line-height: 1.25rem; ;" 
-    class="flex items-center w-full h-full box-border px-4"
+<div style="font:var(--tui-font-text-m); line-height: 1.25rem;" 
+    class="flex items-end w-full box-border gap-5 max-h-[100px] min-h-[46px]"
 >
-    <button
+    <div class="flex items-end flex-auto h-full min-h-[46px] rounded-2xl bg-[var(--tui-background-neutral-2)] px-1">
+        <button
+        class="flex-grow-0 flex-shrink-0 basis-auto mb-[6px]"
         appearance="icon"
         size="s"
-        iconStart="@tui.paperclip"
+        iconStart="@tui.smile"
         tuiDropdownHover
         tuiDropdownOpen
         tuiIconButton
         type="button"
         [tuiDropdown]="dropdown"
-    >
-        Action
-    </button>
-    <ng-template
-        #dropdown
-        let-close
-    >
-        <tui-data-list-wrapper
-            [items]="items"
-            [itemContent]="stringify | tuiStringifyContent"
-            (itemClick)="menu($event);close()"
-        />
-    </ng-template>
-    <div class="flex items-center flex-grow" >
-        <app-text-editor></app-text-editor>
+        >
+            Action
+        </button>
+        <ng-template
+            #dropdown
+            let-close
+        >
+            <tui-data-list-wrapper
+                [items]="items"
+                [itemContent]="stringify | tuiStringifyContent"
+                (itemClick)="menu($event);close()"
+            />
+        </ng-template>
+        <div class="flex items-center flex-auto" >
+            <app-text-editor></app-text-editor>
+            <!-- <input type="text" placeholder="Message..."> -->
+        </div>
+        <button class="flex items-center flex-grow-0 flex-shrink-0 basis-auto mb-[6px]"
+            appearance="icon"
+            iconStart="@tui.paperclip"
+            size="s"
+            tuiIconButton
+            type="button"
+        >
+        </button>
+        <!-- <div class="flex items-center flex-grow-0 flex-shrink-0 basis-auto">
+            <tui-icon class="cursor-pointer" tuiAppearance="icon" icon="@tui.paperclip"  />
+        </div> -->
     </div>
-    <div class="flex items-center">
-      <tui-icon class="w-5 h-5 cursor-pointer" tuiAppearance="icon" icon="@tui.search"  />
+    <div class="flex items-center flex-grow-0 flex-shrink-0 basis-auto">
+        <button
+            appearance="primary"
+            iconStart="@tui.mic"
+            size="m"
+            tuiIconButton
+            type="button"
+            [style.border-radius.%]="100"
+        >
+            Favorite
+        </button>
+        <!-- send-horizontal -->
+        <!-- <tui-icon class="cursor-pointer" tuiAppearance="icon" icon="@tui.mic"  /> -->
     </div>
 </div>

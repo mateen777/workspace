@@ -28,3 +28,11 @@ hr{
         border-color: transparent !important;
     }
 }
+
+.editor {
+
+  tui-scrollbar {
+    max-height: 100px;
+    padding-bottom: 6px;
+  }
+}

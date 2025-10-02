@@ -23,7 +23,7 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
         provideTuiEditor({
-            // placeholder: {placeholder: 'Message...'},
+            placeholder: {placeholder: 'Message...'},
         }),
     ],
 })
