@@ -11,20 +11,10 @@
         tuiDropdownOpen
         tuiIconButton
         type="button"
-        [tuiDropdown]="dropdown"
+        [tuiDropdown]="emojidropdown"
         >
-            Action
+            emoji
         </button>
-        <ng-template
-            #dropdown
-            let-close
-        >
-            <tui-data-list-wrapper
-                [items]="items"
-                [itemContent]="stringify | tuiStringifyContent"
-                (itemClick)="menu($event);close()"
-            />
-        </ng-template>
         <div class="flex items-center flex-auto" >
             <app-text-editor></app-text-editor>
             <!-- <input type="text" placeholder="Message..."> -->
@@ -56,3 +46,25 @@
         <!-- <tui-icon class="cursor-pointer" tuiAppearance="icon" icon="@tui.mic"  /> -->
     </div>
 </div>
+
+<!-- templates -->
+<ng-template #emojidropdown let-close>
+    <emoji-mart 
+        [showPreview]="false"
+        [perLine]="8"
+        [isNative]="true"
+        (emojiClick)="addEmoji($event)"
+    >
+
+    </emoji-mart>
+</ng-template>
+<ng-template
+            #dropdown
+            let-close
+        >
+            <tui-data-list-wrapper
+                [items]="items"
+                [itemContent]="stringify | tuiStringifyContent"
+                (itemClick)="menu($event);close()"
+            />
+</ng-template>

@@ -2,11 +2,12 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { TuiButton, TuiDropdown, TuiIcon } from '@taiga-ui/core';
 import { TuiDataListWrapper, TuiStringifyContentPipe } from '@taiga-ui/kit';
 import { TextEditorComponent } from "../text-editor/text-editor.component";
+import { PickerComponent } from '@ctrl/ngx-emoji-mart';
 
 @Component({
   selector: 'app-input-message',
   imports: [TuiDataListWrapper, TuiStringifyContentPipe,
-    TuiDropdown, TuiIcon, TuiButton, TextEditorComponent],
+    TuiDropdown, TuiIcon, TuiButton, TextEditorComponent, PickerComponent],
   templateUrl: './input-message.component.html',
   styleUrl: './input-message.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -31,5 +32,9 @@ export class InputMessageComponent {
 
   menu(item:any){
     console.log(item);
+  }
+
+  addEmoji(event: any) {
+    console.log(event);
   }
 }
