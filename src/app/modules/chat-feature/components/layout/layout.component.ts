@@ -1,18 +1,11 @@
-import { AsyncPipe, JsonPipe } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { FormControl, ReactiveFormsModule, FormsModule } from '@angular/forms';
-import {
-  TuiRepeatTimes,
-  TuiStringHandler,
-  TuiThemeColorService,
-  TuiFilterPipe
-} from '@taiga-ui/cdk';
+import { TuiFilterPipe } from '@taiga-ui/cdk';
 import {
   TuiAppearance,
   TuiTitle,
   TuiScrollbar,
   TuiIcon,
-  TuiSurface,
   TUI_DARK_MODE,
   TuiButton,
   TuiDropdown,
@@ -20,7 +13,6 @@ import {
 } from '@taiga-ui/core';
 import {
   TuiAvatar,
-  TuiBadge,
   TuiBlock,
   TuiBadgeNotification,
   TuiDataListWrapper,
@@ -28,32 +20,21 @@ import {
   TuiFiles,
   TuiFileLike
 } from '@taiga-ui/kit';
-import {
-  TuiCardLarge,
-  TuiCardMedium,
-  TuiCell,
-  TuiHeader,
-  TuiNavigation,
-} from '@taiga-ui/layout';
-import { TuiInputModule,TuiTextfieldControllerModule } from '@taiga-ui/legacy';
+import { TuiCell } from '@taiga-ui/layout';
+import { TuiTextfieldControllerModule } from '@taiga-ui/legacy';
 import { InputMessageComponent } from "../../../../shared/components/input-message/input-message.component";
+import { ChatContainer } from "../chat-container/chat-container";
 @Component({
     selector: 'app-layout',
     imports: [
     FormsModule,
     ReactiveFormsModule,
     TuiAppearance,
-    TuiSurface,
     TuiBlock,
-    TuiRepeatTimes,
-    TuiHeader,
     TuiTitle,
     TuiScrollbar,
-    TuiBadge,
     TuiIcon,
     TuiAvatar,
-    TuiCardLarge,
-    TuiCardMedium,
     TuiCell,
     TuiBadgeNotification,
     TuiFilterPipe,
@@ -63,25 +44,26 @@ import { InputMessageComponent } from "../../../../shared/components/input-messa
     TuiDropdown,
     TuiStringifyContentPipe,
     TuiFiles,
-    AsyncPipe,
-    JsonPipe,
     InputMessageComponent,
     TuiTextfield,
+    ChatContainer
 ],
     templateUrl: './layout.component.html',
     styleUrl: './layout.component.scss',
     host: {}
 })
 export class LayoutComponent implements OnInit{
-  ngOnInit(): void {
-    console.log(this.search, typeof this.search);
-  }
+
   protected value = 0;
   protected search = '';
   protected chatsearch = '';
   protected showChatSearch:boolean = false;
   protected readonly darkMode = inject(TUI_DARK_MODE);
   protected readonly control = new FormControl<TuiFileLike | null>(null);
+
+  ngOnInit(): void {
+    console.log(this.search, typeof this.search);
+  }
 
   get searchValue(): string {
     return this.search || '';

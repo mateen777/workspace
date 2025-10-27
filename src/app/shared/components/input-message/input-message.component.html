@@ -1,5 +1,5 @@
 <div style="font:var(--tui-font-text-m); line-height: 1.25rem;" 
-    class="flex items-end w-full box-border gap-5 max-h-[100px] min-h-[46px]"
+    class="flex items-end w-full box-border gap-3 max-h-[100px] min-h-[46px]"
 >
     <div class="flex items-end flex-auto h-full min-h-[46px] rounded-2xl bg-[var(--tui-background-neutral-2)] px-1">
         <button
@@ -25,6 +25,8 @@
             size="s"
             tuiIconButton
             type="button"
+            tuiDropdownHover
+            [tuiDropdown]="dropdown"
         >
         </button>
         <!-- <div class="flex items-center flex-grow-0 flex-shrink-0 basis-auto">
@@ -52,7 +54,11 @@
     <emoji-mart 
         [showPreview]="false"
         [perLine]="8"
+        [darkMode]="darkMode()"
         [isNative]="true"
+        [useButton]="true"
+        [color]="'#526ed3'"
+        [emojiSize]="30"
         (emojiClick)="addEmoji($event)"
     >
 

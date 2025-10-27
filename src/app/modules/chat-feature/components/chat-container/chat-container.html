@@ -1,0 +1,124 @@
+<section class="w-full h-full">
+    <span class="container incoming">
+        <span tuiMessage>
+            <span class="multiline">
+                Very long content that goes on the second line
+                Very long content that goes on the second line
+                Very long content that goes on the second line
+                Very long content that goes on the second line
+                Very long content that goes on the second line
+                Very long content that goes on the second line
+                Very long content that goes on the second line
+                Very long content that goes on the second line
+            </span>
+        </span>
+    </span>
+    
+    <span class="container outgoing">
+        <span appearance="primary" tuiMessage>
+            <span class="multiline">
+                Very long content that goes on the second line.
+                Very long content that goes on the second line
+                Very long content that goes on the second line
+                Very long content that goes on the second line
+                Very long content that goes on the second line
+                Very long content that goes on the second line
+                Very long content that goes on the second line
+                Very long content that goes on the second line
+            </span>
+        </span>
+    </span>
+
+    <ng-template
+        #preview
+        let-preview
+    >
+    <tui-preview
+        [initialScale]="1.0"
+        [rotatable]="true"
+        (tuiSwipe)="onSwipe($event)"
+    >
+        <tui-preview-title>{{ titles[index] }}</tui-preview-title>
+        <tui-preview-pagination
+            [length]="length"
+            [(index)]="index"
+        />
+ 
+        <button
+            iconStart="@tui.trash"
+            tuiIconButton
+            tuiPreviewAction
+            type="button"
+            (click)="delete()"
+        >
+            Delete
+        </button>
+        <button
+            iconStart="@tui.download"
+            tuiIconButton
+            tuiPreviewAction
+            type="button"
+            (click)="download()"
+        >
+            Download
+        </button>
+        <button
+            iconStart="@tui.x"
+            tuiIconButton
+            tuiPreviewAction
+            type="button"
+            (click)="preview.complete()"
+        >
+            Close
+        </button>
+ 
+        <img
+            *polymorpheusOutlet="previewContent as src"
+            alt="preview"
+            [src]="src"
+        />
+    </tui-preview>
+    </ng-template>
+    
+    <!-- <div class="chat-container">
+        <div class="messages">
+            @for (msg of messages; track $index) {
+                <div 
+                    [ngClass]="{
+                    'message-row': true,
+                    'mine': msg.isMine,
+                    'theirs': !msg.isMine,
+                    'system': msg.type === 'system'
+                    }">
+            
+                System Message
+                @if (msg.type === 'system') {
+                    <div class="system-msg">
+                        {{ msg.content }}
+                    </div>
+                }
+            
+                Normal Messages
+                <div *ngIf="msg.type !== 'system'" class="message-bubble">
+                    <div class="sender" *ngIf="!msg.isMine">{{ msg.senderName }}</div>
+            
+                    Text Message
+                    <div *ngIf="msg.type === 'text'" class="content">
+                    {{ msg.content }}
+                    </div>
+            
+                    Image Message
+                    <img *ngIf="msg.type === 'image'" [src]="msg.content" alt="Image message" class="msg-image" />
+            
+                    Reactions
+                    <div *ngIf="msg.reactions" class="reactions">
+                    <span *ngFor="let react of msg.reactions">{{ react.emoji }} {{ react.count }}</span>
+                    </div>
+            
+                    <div class="timestamp">{{ formatTime(msg.timestamp) }}</div>
+                </div>
+                </div>
+            }
+        </div>
+    </div> -->
+</section>

@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { TuiButton, TuiDropdown, TuiIcon } from '@taiga-ui/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { TUI_DARK_MODE, TuiButton, TuiDropdown, TuiIcon } from '@taiga-ui/core';
 import { TuiDataListWrapper, TuiStringifyContentPipe } from '@taiga-ui/kit';
 import { TextEditorComponent } from "../text-editor/text-editor.component";
 import { PickerComponent } from '@ctrl/ngx-emoji-mart';
@@ -13,6 +13,7 @@ import { PickerComponent } from '@ctrl/ngx-emoji-mart';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InputMessageComponent { 
+  protected readonly darkMode = inject(TUI_DARK_MODE);
   protected readonly items = [
     {
         icon: '@tui.phone',

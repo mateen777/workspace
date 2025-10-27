@@ -1,9 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+@use '@taiga-ui/core/styles/taiga-ui-local.scss';
+@use '@ctrl/ngx-emoji-mart/picker';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import '@taiga-ui/core/styles/taiga-ui-local.scss';
-@import '@ctrl/ngx-emoji-mart/picker';
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
@@ -36,4 +36,36 @@ hr{
     max-height: 100px;
     padding-bottom: 6px;
   }
+}
+
+.emoji-mart {
+    height: 356px;
+    border: none;
+
+    .emoji-mart-anchor {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .emoji-mart-search {
+        
+        .emoji-mart-search-icon {
+            top: 6px;
+        }
+    }
+    .emoji-mart-emoji {
+        padding: 6px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 0;
+
+        span {
+            display: flex !important;
+            line-height: 100% !important;
+            justify-content: center !important;
+            align-items: center !important;
+        }
+    }
 }
